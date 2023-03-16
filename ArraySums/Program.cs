@@ -33,6 +33,17 @@ namespace ArraySums
                     matrix[i , j] = value;
                 }
             }
+
+            float lineSum = 0.0f;
+            for (int i=0; i < matrix.GetLength(0); i++)
+            {
+                lineSum = 0.0f;
+                for (int j=0; j < matrix.GetLength(1); j++)
+                {
+                    lineSum += matrix[i,j];
+                }
+                Console.WriteLine("The total sum of row "+(i+1)+" is "+lineSum);
+            }
         }
     }
 }
