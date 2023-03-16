@@ -17,7 +17,7 @@ namespace ArraySums
             int h = int.Parse(height);
             int l = int.Parse(length);
 
-            int[] matrix = new int [h , l];
+            float[] matrix = new float[h , l];
         }
     }
 }
