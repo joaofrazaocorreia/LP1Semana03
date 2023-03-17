@@ -7,42 +7,38 @@ namespace PlayerPerks
         [Flags]
         enum perks
         {
-            WaterBreathing = 0,
-            Stealth = 0,
-            AutoHeal = 0,
-            DoubleJump = 0
+            WaterBreathing = 1 << 0,
+            AutoHeal= 1 << 2,
+            Stealth= 1 << 3,
+            DoubleJump= 1 << 4
         };
 
         static void Main(string[] args)
         {
-            perks myPerks = perks.WaterBreathing | perks.Stealth | perks.AutoHeal | perks.DoubleJump;
+            perks myPerks = 0;
 
-            int w=0;
-            int a=0;
-            int s=0;
-            int d=0;
             bool known=true;
 
             foreach (char c in args[0])
             {
                 if (c==char.Parse("w"))
                 {
-                    w+=1;
+                    myPerks ^= perks.WaterBreathing;
                 }
 
                 else if (c==char.Parse("a"))
                 {
-                    a+=1;
+                    myPerks ^= perks.AutoHeal;
                 }
 
                 else if (c==char.Parse("s"))
                 {
-                    s+=1;
+                    myPerks ^= perks.Stealth;
                 }
 
                 else if (c==char.Parse("d"))
                 {
-                    d+=1;
+                    myPerks ^= perks.DoubleJump;
                 }
 
                 else
@@ -53,33 +49,6 @@ namespace PlayerPerks
 
             if (known)
             {
-                if (w==0 ^ w%2==0)
-                {
-                    myPerks ^= perks.WaterBreathing;
-                }
-
-                if (a==0 ^ a%2==0)
-                {
-                    myPerks ^= perks.AutoHeal;
-                }
-
-                if (s==0 ^ s%2==0)
-                {
-                    myPerks ^= perks.Stealth;
-                }
-
-                if (d==0 ^ d%2==0)
-                {
-                    myPerks ^= perks.DoubleJump;
-                }
-
-                int[] array= new int[4] {w,a,s,d};
-                foreach (int n in array)
-                {
-                    Console.WriteLine(n);
-                }
-
-
                 if (myPerks != 0)
                 {
                     Console.WriteLine(myPerks);
